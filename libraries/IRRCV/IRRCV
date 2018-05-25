@@ -1,0 +1,35 @@
+class IRRCV{
+Public:
+String address;
+
+
+	IRRCV(int pin):		
+		pinMode(pin,INPUT);
+		address=String(pin)+",";
+		sec=[67];
+		last=0;
+		attachInterrupt(digitalPinToInterrupt(pin), catch, CHANGE);
+Private:
+int len=0;
+int sec[];
+int current=0;
+int diff=0;
+
+	void catch(){
+		current=micros()
+		diff=current-last
+		last=current
+		len=0
+		if (diff<10000 && le < 67){
+			sec[len]=diff
+			len+=1
+		}else{
+			send();
+			sec=[]
+			le=0
+		}
+
+	void send(){
+		writer.print(adresssec);
+	}
+};
